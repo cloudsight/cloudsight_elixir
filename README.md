@@ -1,4 +1,4 @@
-# CloudsightElixir
+# Cloudsight Elixir
 
 Simple Elixir wrapper for the [Cloudsight Api](https://cloudsight.readme.io/reference).
 
@@ -18,35 +18,35 @@ end
 
 ## Examples
 
-First create a client with your API Key received from [Cloudsight](https://cloudsight.ai).
+First create a client with your API Key from [Cloudsight](https://cloudsight.ai).
 
 ```elixir
-
 # Create client with your api key
-iex(1)> client = CloudsightElixir.Client.new("your_api_key")
+iex()> client = CloudsightElixir.Client.new("your_api_key")
 %CloudsightElixir.Client{api_key: "your_api_key",
  endpoint: "https://api.cloudsight.ai"}
 
-# Send an image or remote image url to Cloudsight for identification
-iex(2)> {:ok, body} = CloudsightElixir.send(%{remote_image_url: "http://englishbookgeorgia.com/blogebg/wp-content/uploads/2015/08/husky.jpg", locale: "en"}, client)
+# Send an image to Cloudsight for identification
+iex()> {:ok, body} = CloudsightElixir.send(%{image: "./path/to/my/file.png", locale: "en"}, client)
+{:ok,
+ [status: "not completed", token: "dasdGD9YULEKy53BG",
+   url: "https://api.cloudsight.ai/uploads/image_request/image/10678/file.png"]}
+ 
+# Or send an image that is hosted at a remote url
+iex()> {:ok, body} = CloudsightElixir.send(%{remote_image_url: "http://sample.com/husky.jpg", locale: "en"}, client)
 {:ok,
  [status: "not completed", token: "dXlycVGpIED9YULEKyXd7g",
-   url: "http://tagpics_app_1:3000/uploads/image_request/image/1066/1066384/1066384278/husky.jpg"]}
+   url: "https://api.cloudsight.ai/uploads/image_request/image/1066/husky.jpg"]}
 
 # Note the token so you can retrieve it
-iex(3)> token = body[:token]
+iex()> token = body[:token]
 "dXlycVGpIED9YULEKyXd7g"
 
-
 # Poll for the response - the image is usually identified in 5-10 seconds
-iex(4)> {:ok, body} = CloudsightElixir.retrieve(token, client)
+iex()> {:ok, body} = CloudsightElixir.retrieve(token, client)
 {:ok,
 [name: "Grey Husky Dog", status: "completed", terms: ["Husky", "Dog"],
 token: "dXlycVGpIED9YULEKyXd7g", ttl: -240.0,
-url: "http://tagpics_app_1:3000/uploads/image_request/image/462/462197/462197426/training_image_placeholder.gif"]}
+url: "https://api.cloudsight.ai/uploads/image_request/image/462/462197/462197426/training_image_placeholder.gif"]}
 
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/cloudsight_elixir](https://hexdocs.pm/cloudsight_elixir).

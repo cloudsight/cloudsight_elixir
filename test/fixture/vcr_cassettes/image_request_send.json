@@ -1,0 +1,35 @@
+[
+  {
+    "request": {
+      "body": "{:multipart, [{:file, \"test/support/logo.png\", {\"form-data\", [name: \"image\", filename: \"logo.png\"]}, []}, {\"locale\", \"en\"}]}",
+      "headers": {
+        "Content-type": "application/x-www-form-urlencoded",
+        "Authorization": "CloudSight yourtokencomeshere"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "http://api.lvh.me:3000/v1/images"
+    },
+    "response": {
+      "body": "{\"token\":\"tTzMU7bDpsT4gsDyJLilDA\",\"url\":\"http://tagpics_app_1:3000/uploads/image_request/image/1066/1066384/1066384276/logo.png\",\"status\":\"not completed\"}",
+      "headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-CloudSight-RequestRate": "1.8633675509091776",
+        "X-CloudSight-CreditBalance": "99",
+        "X-CloudSight-Overage": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"702ef68dc440bafe0fd103750a1365c8\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Meta-Request-Version": "0.4.3",
+        "X-Request-Id": "9957c460-88b3-41e2-8955-708de24d31c8",
+        "X-Runtime": "0.685369",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

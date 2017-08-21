@@ -1,0 +1,34 @@
+[
+  {
+    "request": {
+      "body": "{\"remote_image_url\":\"http://englishbookgeorgia.com/blogebg/wp-content/uploads/2015/08/husky.jpg\"}",
+      "headers": {
+        "Content-type": "application/json",
+        "Authorization": "CloudSight yourtokencomeshere"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "http://api.lvh.me:3000/v1/images"
+    },
+    "response": {
+      "body": "{\"error\":{\"locale\":[\"can't be blank\"]}}",
+      "headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-CloudSight-RequestRate": "0.9173087586342193",
+        "X-CloudSight-CreditBalance": "99",
+        "X-CloudSight-Overage": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": "no-cache",
+        "X-Meta-Request-Version": "0.4.3",
+        "X-Request-Id": "2c8afe86-ba90-4bd5-b48b-4366cb3e54d9",
+        "X-Runtime": "4.854122",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 422,
+      "type": "ok"
+    }
+  }
+]

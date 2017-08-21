@@ -1,0 +1,34 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Content-type": "application/json",
+        "Authorization": "CloudSight yourtokencomeshere"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "http://api.lvh.me:3000/v1/images/dogs_image_request"
+    },
+    "response": {
+      "body": "{\"token\":\"dogs_image_request\",\"url\":\"http://tagpics_app_1:3000/uploads/image_request/image/291/291783/291783336/training_image_placeholder.gif\",\"ttl\":-240.0,\"status\":\"completed\",\"name\":\"Husky\",\"terms\":[\"husky\"]}",
+      "headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-CloudSight-RequestRate": "1.7058825864695024",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"bb501c8ae46186edcaa92b405830aa36\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "Set-Cookie": "_imagetag_session=ZitMbktGVlpmU3ptRnpDWWNvTVR2K2dia1k3cXJHSThGV05wTlpEVXBWV29IaldRMVZDdUcyK0h2RVc1SmwzTkVMdy9aQWNOYnNZT3lhblN1cFNzOXc9PS0tUGx1NFZQTHdXWjdacy8rV0czL3p2QT09--4a106fa49137ffdd84b30d4338ba309c18a075cf; path=/; HttpOnly",
+        "X-Meta-Request-Version": "0.4.3",
+        "X-Request-Id": "ba775619-db1d-4847-9c79-61153f1b4763",
+        "X-Runtime": "0.254127",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

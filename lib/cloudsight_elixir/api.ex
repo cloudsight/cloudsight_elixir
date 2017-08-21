@@ -35,7 +35,7 @@ defmodule CloudsightElixir.Api do
 
   @spec raw_request(:get | :post, binary, binary, list) :: HTTPoison.Response.t
   def raw_request(method, url, body \\ "", headers \\ []) do
-    request!(method, url, body, headers, [timeout: 10_000])
+    request!(method, url, body, headers, [timeout: 20_000])
   end
 
   @spec process_url(binary, Client.t) :: binary

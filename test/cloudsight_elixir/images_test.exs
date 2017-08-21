@@ -57,6 +57,21 @@ defmodule CloudsightElixir.ImagesTest do
     end
   end
 
+  test "wait for with timeout", %{client: client} do
+    use_cassette "image_response_get_timeout" do
+      assert Images.wait_for("tTzMU7bDpsT4gsDyJLilDA", client, 5) == {:error, :timeout}
+    end
+  end
+
+  test "wait for with completed response", %{client: client} do
+    use_cassette "image_response_get_completed" do
+      token = "dogs_image_request"
+      {:ok, body} = Images.wait_for(token, client)
+      assert body[:status] == "completed"
+      assert body[:name] == "Husky"
+    end
+  end
+
   test "encode body" do
     assert Images.encode_body(%{locale: "en"}) == Poison.encode!(%{locale: "en"})
   end

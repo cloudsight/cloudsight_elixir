@@ -42,8 +42,15 @@ iex()> {:ok, body} = CloudsightElixir.send(%{remote_image_url: "http://sample.co
 iex()> token = body[:token]
 "dXlycVGpIED9YULEKyXd7g"
 
-# Poll for the response - the image is usually identified in 5-10 seconds
+# Check on the response - the image is usually identified in 5-10 seconds
 iex()> {:ok, body} = CloudsightElixir.retrieve(token, client)
+{:ok,
+[name: "Grey Husky Dog", status: "completed", terms: ["Husky", "Dog"],
+token: "dXlycVGpIED9YULEKyXd7g", ttl: -240.0,
+url: "https://api.cloudsight.ai/uploads/image_request/image/462/462197/462197426/training_image_placeholder.gif"]}
+
+# Use CloudsightElixir.wait_for to poll for you until the response is ready - defaults to timing out after 20 seconds
+iex()> {:ok, body} = CloudsightElixir.wait_for(token, client)
 {:ok,
 [name: "Grey Husky Dog", status: "completed", terms: ["Husky", "Dog"],
 token: "dXlycVGpIED9YULEKyXd7g", ttl: -240.0,

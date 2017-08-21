@@ -17,6 +17,33 @@ defmodule CloudsightElixir.Images do
     |> Api.get(client)
   end
 
+  @spec wait_for(binary, Client.t) :: {:ok, list}
+  def wait_for(token, client), do: wait_for(token, client, 20_000)
+
+  @spec wait_for(binary, Client.t, map) :: {:ok, list}
+  def wait_for(token, client, %{ttl: ttl}), do: wait_for(token, client, ttl)
+
+  @spec wait_for(binary, Client.t, number) :: {atom, atom | [key: binary]}
+  def wait_for(_token, _client, time_remaining) when time_remaining <= 0, do: {:error, :timeout}
+  def wait_for(token, client, time_remaining) do
+    time       = :os.system_time(:millisecond)
+    response   = retrieve(token, client)
+    time_spent = (:os.system_time(:millisecond) - time)
+
+    case handle_response(response) do
+      {:ok, body} -> {:ok, body}
+      {:no, _}    -> wait_for(token, client, time_remaining - time_spent)
+    end
+  end
+
+  @spec handle_response({atom, [key: binary]}) :: {atom, [key: binary] | nil}
+  defp handle_response({:ok, body}) do
+    case body[:status] do
+      "completed"     -> {:ok, body}
+      _               -> {:no, nil}
+    end
+  end
+
   @spec get_path(binary) :: binary
   defp get_path(token), do: @get_path <> "/" <> token
 

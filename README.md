@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cloudsight/cloudsight_elixir.svg?branch=master)](https://travis-ci.org/cloudsight/cloudsight_elixir)
+
 # Cloudsight Elixir
 
 Simple Elixir wrapper for the [Cloudsight Api](https://cloudsight.readme.io/reference).

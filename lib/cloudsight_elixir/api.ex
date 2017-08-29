@@ -48,6 +48,7 @@ defmodule CloudsightElixir.Api do
     "CloudSight #{client.api_key}"
   end
 
+  def process_response_body(""),  do: ""
   def process_response_body(body) do
     body
     |> Poison.decode!

@@ -42,4 +42,15 @@ defmodule CloudsightElixir do
   @spec retrieve(binary, Client.t) :: {atom, [key: binary] | atom}
   defdelegate wait_for(token, client), to: Images
   defdelegate wait_for(token, client, options), to: Images
+
+  @doc """
+  Repost an image if it expired in the queue without returning a response
+
+  ## Examples
+
+      client = CloudsightElixir.Client.new("sample_api_key")
+      CloudsightElixir.repost("my_token", client)
+  """
+  @spec repost(binary, Client.t) :: {atom, binary}
+  defdelegate repost(token, client), to: Images
 end

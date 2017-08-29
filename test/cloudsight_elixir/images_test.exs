@@ -85,4 +85,16 @@ defmodule CloudsightElixir.ImagesTest do
         ]
       }
   end
+
+  test "repost_path" do
+    assert Images.repost_path("abc123") == "/v1/images/abc123/repost"
+  end
+
+  test "repost", %{client: client} do
+    use_cassette "image_request_repost" do
+      token = "tTzMU7bDpsT4gsDyJLilDA"
+      {:ok, body} = Images.repost(token, client)
+      assert body == ""
+    end
+  end
 end

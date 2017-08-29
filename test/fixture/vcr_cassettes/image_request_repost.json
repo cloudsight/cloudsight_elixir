@@ -1,0 +1,34 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Content-type": "application/json",
+        "Authorization": "CloudSight yourtokencomeshere"
+      },
+      "method": "post",
+      "options": {
+        "connect_timeout": 20000
+      },
+      "request_body": "",
+      "url": "http://api.lvh.me:3000/v1/images/tTzMU7bDpsT4gsDyJLilDA/repost"
+    },
+    "response": {
+      "body": "",
+      "headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-CloudSight-RequestRate": "0.7270116526296158",
+        "Content-Type": "text/html",
+        "Cache-Control": "no-cache",
+        "X-Meta-Request-Version": "0.4.3",
+        "X-Request-Id": "41aadb87-5cac-47f1-b5b7-aedd6be3a4d0",
+        "X-Runtime": "0.491709",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

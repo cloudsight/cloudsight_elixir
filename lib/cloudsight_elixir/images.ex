@@ -36,6 +36,13 @@ defmodule CloudsightElixir.Images do
     end
   end
 
+  @spec repost(binary, Client.t) :: {atom, map}
+  def repost(token, client) do
+    token
+    |> repost_path
+    |> Api.post("", client)
+  end
+
   @spec handle_response({atom, [key: binary]}) :: {atom, [key: binary] | nil}
   defp handle_response({:ok, body}) do
     case body[:status] do
@@ -65,4 +72,6 @@ defmodule CloudsightElixir.Images do
     options
     |> Poison.encode!
   end
+
+  def repost_path(token), do:  "/v1/images/#{token}/repost"
 end

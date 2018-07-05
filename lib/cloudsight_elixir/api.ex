@@ -3,7 +3,6 @@ defmodule CloudsightElixir.Api do
   Core functions for interfacing with the API
   """
 
-
   use HTTPoison.Base
 
   @spec get(binary, Client.t) :: {atom, map}
@@ -28,10 +27,7 @@ defmodule CloudsightElixir.Api do
   @spec handle_response(HTTPoison.Response.t) :: {atom, map}
   def handle_response(%HTTPoison.Response{status_code: 200, body: body}), do: { :ok,    body }
   def handle_response(%HTTPoison.Response{status_code: 201, body: body}), do: { :ok,    body }
-  def handle_response(%HTTPoison.Response{status_code: 401, body: body}), do: { :error, body }
-  def handle_response(%HTTPoison.Response{status_code: 404, body: body}), do: { :error, body }
-  def handle_response(%HTTPoison.Response{status_code: 422, body: body}), do: { :error, body }
-  def handle_response(%HTTPoison.Response{status_code: 500, body: body}), do: { :error, body }
+  def handle_response(%HTTPoison.Response{status_code: _, body: body}), do: { :error, body }
 
   @spec raw_request(:get | :post, binary, binary, list) :: HTTPoison.Response.t
   def raw_request(method, url, body \\ "", headers \\ []) do
@@ -52,10 +48,8 @@ defmodule CloudsightElixir.Api do
   def process_response_body(body) do
     body
     |> Poison.decode!
-    |> Enum.map(fn({k, v}) -> {String.to_atom(k), v} end)
   end
 
   def header_for({:multipart, _}), do: [{"Content-type", "application/x-www-form-urlencoded"}]
   def header_for(_), do: [{"Content-type", "application/json"}]
-
 end

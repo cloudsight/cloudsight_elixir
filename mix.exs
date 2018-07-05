@@ -8,8 +8,8 @@ defmodule CloudsightElixir.Mixfile do
   def project do
     [
       app: :cloudsight_elixir,
-      version: "0.1.1",
-      elixir: "~> 1.3",
+      version: "0.2.0",
+      elixir: "~> 1.6",
       name: "Cloudsight API",
       description: @description,
       start_permanent: Mix.env == :prod,
@@ -26,9 +26,9 @@ defmodule CloudsightElixir.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "~> 0.13"},
+      {:httpoison, "~> 1.0"},
       {:poison, "~> 3.1"},
-      {:exvcr, "~> 0.8", only: :test},
+      {:exvcr, "~> 0.10.2", only: :test},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end

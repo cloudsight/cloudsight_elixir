@@ -43,9 +43,9 @@ defmodule CloudsightElixir.Images do
     |> Api.post("", client)
   end
 
-  @spec handle_response({atom, [key: binary]}) :: {atom, [key: binary] | nil}
+  @spec handle_response({atom, map}) :: {atom, map | nil}
   defp handle_response({:ok, body}) do
-    case body[:status] do
+    case body["status"] do
       "completed"     -> {:ok, body}
       _               -> {:no, nil}
     end

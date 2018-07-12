@@ -25,9 +25,9 @@ defmodule CloudsightElixir.Api do
   end
 
   @spec handle_response(HTTPoison.Response.t) :: {atom, map}
-  def handle_response(%HTTPoison.Response{status_code: 200, body: body}), do: { :ok,    body }
-  def handle_response(%HTTPoison.Response{status_code: 201, body: body}), do: { :ok,    body }
-  def handle_response(%HTTPoison.Response{status_code: _, body: body}), do: { :error, body }
+  def handle_response(%HTTPoison.Response{status_code: status_code, body: body}) do
+    {:ok, %{ status_code: status_code, body: body }}
+  end
 
   @spec raw_request(:get | :post, binary, binary, list) :: HTTPoison.Response.t
   def raw_request(method, url, body \\ "", headers \\ []) do

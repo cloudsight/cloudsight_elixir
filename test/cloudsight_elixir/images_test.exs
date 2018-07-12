@@ -21,7 +21,7 @@ defmodule CloudsightElixir.ImagesTest do
   test "send", %{client: client} do
     use_cassette "image_request_send" do
       map = %{remote_image_url: "http://englishbookgeorgia.com/blogebg/wp-content/uploads/2015/08/husky.jpg", locale: "en"}
-      {:ok, body} = Images.send(map, client)
+      {:ok, %{body: body}} = Images.send(map, client)
       assert body["status"] == "not completed"
       assert body["token"]  == "tTzMU7bDpsT4gsDyJLilDA"
     end
@@ -30,7 +30,7 @@ defmodule CloudsightElixir.ImagesTest do
   test "send file", %{client: client} do
     use_cassette "image_request_send" do
       map = %{image: "test/support/logo.png", locale: "en"}
-      {:ok, body} = Images.send(map, client)
+      {:ok, %{body: body}} = Images.send(map, client)
       assert body["status"] == "not completed"
       assert body["token"]  == "tTzMU7bDpsT4gsDyJLilDA"
     end
@@ -39,15 +39,16 @@ defmodule CloudsightElixir.ImagesTest do
   test "send with error", %{client: client} do
     use_cassette "image_request_send_with_error" do
       map = %{remote_image_url: "http://englishbookgeorgia.com/blogebg/wp-content/uploads/2015/08/husky.jpg"}
-      {:error, error} = Images.send(map, client)
-      assert error["error"] == %{"locale" => ["can't be blank"]}
+      {:ok, %{status_code: status_code, body: body}} = Images.send(map, client)
+      assert body["error"] == %{"locale" => ["can't be blank"]}
+      assert status_code == 422
     end
   end
 
   test "retrieve timeout", %{client: client} do
     use_cassette "image_response_get_timeout" do
       token = "tTzMU7bDpsT4gsDyJLilDA"
-      {:ok, body} = Images.retrieve(token, client)
+      {:ok, %{body: body}} = Images.retrieve(token, client)
       assert body["status"] == "timeout"
     end
   end
@@ -55,7 +56,7 @@ defmodule CloudsightElixir.ImagesTest do
   test "retrieve completed", %{client: client} do
     use_cassette "image_response_get_completed" do
       token = "dogs_image_request"
-      {:ok, body} = Images.retrieve(token, client)
+      {:ok, %{body: body}} = Images.retrieve(token, client)
       assert body["status"] == "completed"
       assert body["name"] == "Husky"
     end
@@ -70,7 +71,7 @@ defmodule CloudsightElixir.ImagesTest do
   test "wait for with completed response", %{client: client} do
     use_cassette "image_response_get_completed" do
       token = "dogs_image_request"
-      {:ok, body} = Images.wait_for(token, client)
+      {:ok, %{body: body}} = Images.wait_for(token, client)
       assert body["status"] == "completed"
       assert body["name"] == "Husky"
     end
@@ -97,7 +98,7 @@ defmodule CloudsightElixir.ImagesTest do
   test "repost", %{client: client} do
     use_cassette "image_request_repost" do
       token = "tTzMU7bDpsT4gsDyJLilDA"
-      {:ok, body} = Images.repost(token, client)
+      {:ok, %{body: body}} = Images.repost(token, client)
       assert body == ""
     end
   end

@@ -31,7 +31,7 @@ defmodule CloudsightElixir.Images do
     time_spent = (:os.system_time(:millisecond) - time)
 
     case handle_response(response) do
-      {:ok, body} -> {:ok, body}
+      {:ok, response} -> {:ok, response}
       {:no, _}    -> wait_for(token, client, time_remaining - time_spent)
     end
   end
@@ -44,9 +44,9 @@ defmodule CloudsightElixir.Images do
   end
 
   @spec handle_response({atom, map}) :: {atom, map | nil}
-  defp handle_response({:ok, body}) do
+  defp handle_response({:ok, %{body: body} = response}) do
     case body["status"] do
-      "completed"     -> {:ok, body}
+      "completed"     -> {:ok, response}
       _               -> {:no, nil}
     end
   end

@@ -1,0 +1,37 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Content-type": "application/json",
+        "Authorization": "CloudSight yourtokencomeshere"
+      },
+      "method": "get",
+      "options": {
+        "connect_timeout": 20000
+      },
+      "request_body": "",
+      "url": "http://api.lvh.me:3000/v1/videos/slam_video"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"token\":\"slam_video\",\"url\":\"http://tagpics_app_1:3000/uploads/video_request/slam_video/animated.gif\",\"status\":\"completed\",\"split_video\":true,\"children\":[{\"token\":\"slam_video_scene_1\",\"shot\":[\"60.1\",\"10.0\"],\"status\":\"completed\",\"name\":\"full video\"},{\"token\":\"slam_video_scene_2\",\"shot\":[\"100.0\",\"12.0\"],\"status\":\"completed\",\"name\":\"full video\"}]}",
+      "headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"e4f48e7811a90e4c7c1219f614005f9c\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "Set-Cookie": "_imagetag_session=MlVhdG40aktqZTFHRE5zczR5OHpFRlhMVzJLbktvdkR0UkhLd1Zsd0N3aGttWGZ3UUs2NVd1N3FwckIzM0t6Y1ZJZUVOU1dObUN4RXhwQVBITnd4VGc9PS0tRGxKbnFleDJ2TVUvTm4wcG0raklmQT09--c6c5ad929d8dfb3ecbcd43a1248455cedfe091e5; path=/; HttpOnly",
+        "X-Meta-Request-Version": "0.6.0",
+        "X-Request-Id": "90b7685e-8949-414c-a01f-418ac079353a",
+        "X-Runtime": "1.281762",
+        "Vary": "Origin",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

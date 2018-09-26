@@ -1,0 +1,36 @@
+[
+  {
+    "request": {
+      "body": "{\"remote_video_url\":\"http://techslides.com/demos/sample-videos/small.mp4\",\"locale\":\"en\"}",
+      "headers": {
+        "Content-type": "application/json",
+        "Authorization": "CloudSight yourtokencomeshere"
+      },
+      "method": "post",
+      "options": {
+        "connect_timeout": 20000
+      },
+      "request_body": "",
+      "url": "http://api.lvh.me:3000/v1/videos"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"token\":\"TnXkoZOjJCch7BXoJTL0QA\",\"url\":\"http://tagpics_app_1:3000/uploads/video_request/TnXkoZOjJCch7BXoJTL0QA/small.mp4\",\"status\":\"not completed\",\"split_video\":true,\"children\":[]}",
+      "headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"6cbc65bcf80756b5fed560b8358c2e50\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Meta-Request-Version": "0.6.0",
+        "X-Request-Id": "217b81e6-4493-4fe2-821b-c7d7582d26f9",
+        "X-Runtime": "4.330292",
+        "Vary": "Origin",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

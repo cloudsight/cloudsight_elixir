@@ -1,0 +1,36 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Content-type": "application/json",
+        "Authorization": "CloudSight yourtokencomeshere"
+      },
+      "method": "get",
+      "options": {
+        "connect_timeout": 20000
+      },
+      "request_body": "",
+      "url": "http://api.lvh.me:3000/v1/videos/tTzMU7bDpsT4gsDyJLilDA"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"error\":\"Record not found\",\"status\":\"not found\"}",
+      "headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": "no-cache",
+        "Set-Cookie": "_imagetag_session=czhXVUdZRWMyUmFFL0pJbmZPNElpemdEVG94ZitQeGhnRW5KL3BURFF3MG14Rk5YSVB0dU1va2dXOUxqbUFNMDUyQ0FKdSsxU1BvclVtOVZkdGxuMUE9PS0tYUpveXMrUkxrSWk5RWpBYjN5YlJWUT09--cd6302e8430222f8fd648d2e875b41b471fcad2d; path=/; HttpOnly",
+        "X-Meta-Request-Version": "0.6.0",
+        "X-Request-Id": "05584954-c55b-4dee-97c3-3d0e33cac31c",
+        "X-Runtime": "1.086274",
+        "Vary": "Origin",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 404,
+      "type": "ok"
+    }
+  }
+]

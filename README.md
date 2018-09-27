@@ -13,7 +13,7 @@ by adding `cloudsight_elixir` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:cloudsight_elixir, "~> 0.2.0"}
+    {:cloudsight_elixir, "~> 0.3.0"}
   ]
 end
 ```

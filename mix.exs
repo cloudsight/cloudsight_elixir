@@ -8,8 +8,8 @@ defmodule CloudsightElixir.Mixfile do
   def project do
     [
       app: :cloudsight_elixir,
-      version: "0.2.0",
-      elixir: "~> 1.6",
+      version: "0.3.0",
+      elixir: "~> 1.7",
       name: "Cloudsight API",
       description: @description,
       start_permanent: Mix.env == :prod,

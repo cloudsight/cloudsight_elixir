@@ -64,7 +64,7 @@ defmodule CloudsightElixir.ImagesTest do
 
   test "wait for with timeout", %{client: client} do
     use_cassette "image_response_get_timeout" do
-      assert Images.wait_for("tTzMU7bDpsT4gsDyJLilDA", client, 5) == {:error, :timeout}
+      assert Images.wait_for("tTzMU7bDpsT4gsDyJLilDA", client, %{ttl: 5}) == {:error, :timeout}
     end
   end
 
@@ -75,20 +75,6 @@ defmodule CloudsightElixir.ImagesTest do
       assert body["status"] == "completed"
       assert body["name"] == "Husky"
     end
-  end
-
-  test "encode body" do
-    assert Images.encode_body(%{locale: "en"}) == Poison.encode!(%{locale: "en"})
-  end
-
-  test "encode body with file" do
-    file = "test/support/logo.png"
-    assert Images.encode_body(%{image: file, locale: "en"}) == 
-      {:multipart, [
-        {:file, file, {"form-data", [name: "image", filename: Path.basename(file)]}, []},
-        {"locale", "en"}
-        ]
-      }
   end
 
   test "repost_path" do

@@ -58,7 +58,7 @@ defmodule CloudsightElixir.VideosTest do
 
   test "wait for with timeout", %{client: client} do
     use_cassette "video_response_get_timeout" do
-      assert Videos.wait_for("tTzMU7bDpsT4gsDyJLilDA", client, 5) == {:error, :timeout}
+      assert Videos.wait_for("tTzMU7bDpsT4gsDyJLilDA", client, %{ttl: 5}) == {:error, :timeout}
     end
   end
 
@@ -71,19 +71,5 @@ defmodule CloudsightElixir.VideosTest do
         child_video["name"]
       end) == ["full video", "full video"]
     end
-  end
-
-  test "encode body" do
-    assert Videos.encode_body(%{locale: "en"}) == Poison.encode!(%{locale: "en"})
-  end
-
-  test "encode body with file" do
-    file = "test/support/logo.png"
-    assert Videos.encode_body(%{video: file, locale: "en"}) == 
-      {:multipart, [
-        {:file, file, {"form-data", [name: "video", filename: Path.basename(file)]}, []},
-        {"locale", "en"}
-        ]
-      }
   end
 end

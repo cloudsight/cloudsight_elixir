@@ -29,7 +29,7 @@ defmodule CloudsightElixir.Mixfile do
       {:httpoison, "~> 1.0"},
       {:poison, "~> 3.1"},
       {:exvcr, "~> 0.10.2", only: :test},
-      {:ex_doc, ">= 0.0.0", only: :dev}
+      {:ex_doc, "~> 0.19", only: :dev}
     ]
   end
 

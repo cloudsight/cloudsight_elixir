@@ -1,0 +1,36 @@
+[
+  {
+    "request": {
+      "body": "{\"remote_video_url\":\"http://techslides.com/demos/sample-videos/small.mp4\"}",
+      "headers": {
+        "Content-type": "application/json",
+        "Authorization": "CloudSight yourtokencomeshere"
+      },
+      "method": "post",
+      "options": {
+        "connect_timeout": 20000
+      },
+      "request_body": "",
+      "url": "http://api.lvh.me:3000/v1/videos"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"error\":{\"locale\":[\"can't be blank\"]}}",
+      "headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-CloudSight-RequestRate": "1.240062642901063",
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": "no-cache",
+        "X-Meta-Request-Version": "0.6.0",
+        "X-Request-Id": "a0ad594c-fa8b-466f-9b25-17654ed0223d",
+        "X-Runtime": "4.639250",
+        "Vary": "Origin",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 422,
+      "type": "ok"
+    }
+  }
+]

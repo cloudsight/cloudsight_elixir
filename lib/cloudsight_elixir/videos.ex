@@ -1,8 +1,8 @@
-defmodule CloudsightElixir.Images do
-  alias CloudsightElixir.{Api, SharedInterface}
+defmodule CloudsightElixir.Videos do
+  alias CloudsightElixir.SharedInterface
 
-  @post_path "/v1/images"
-  @get_path  "/v1/images"
+  @post_path "/v1/videos"
+  @get_path  "/v1/videos"
 
   @spec send(map, Client.t) :: {atom, map}
   def send(options, client) do
@@ -23,13 +23,4 @@ defmodule CloudsightElixir.Images do
   def wait_for(token, client, %{ttl: ttl}) do
     SharedInterface.wait_for(@get_path, token, client, ttl)
   end
-
-  @spec repost(binary, Client.t) :: {atom, map}
-  def repost(token, client) do
-    token
-    |> repost_path
-    |> Api.post("", client)
-  end
-
-  def repost_path(token), do:  "/v1/images/#{token}/repost"
 end

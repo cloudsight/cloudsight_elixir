@@ -7,7 +7,7 @@ defmodule CloudsightElixir.SharedInterface do
 
   @spec send(binary, map, Client.t) :: {atom, map}
   def send(path, options, client) do
-    Api.post(path, encode_body(options), client)
+    Api.post(path, options, client)
   end
 
   @spec retrieve(binary, binary, Client.t) :: {atom, map}
@@ -36,29 +36,6 @@ defmodule CloudsightElixir.SharedInterface do
       "completed"     -> {:ok, response}
       _               -> {:no, nil}
     end
-  end
-
-  @spec encode_body(map) :: binary
-  def encode_body(%{image: _image} = map), do: encode_multipart_body(map, :image)
-  def encode_body(%{video: _video} = map), do: encode_multipart_body(map, :video)
-  def encode_body(options) do
-    options
-    |> Poison.encode!
-  end
-
-  @spec encode_multipart_body(map, atom) :: {atom, list}
-  defp encode_multipart_body(map, file_type) do
-    {path, map} = Map.pop(map, file_type)
-
-    additional_params = Enum.reduce(map, [], fn {k, v}, acc ->
-      acc ++ [{to_string(k), v}]
-    end)
-
-    {:multipart,
-      [
-        {:file, path, {"form-data", [name: to_string(file_type), filename: Path.basename(path)]}, []}
-      ] ++ additional_params
-    }
   end
 
   @spec get_path(binary, binary) :: binary

@@ -139,3 +139,23 @@ iex()> CloudsightElixir.wait_for_video(token, client)
  }
 }
 ```
+
+## OAuth1
+
+We do support OAuth1 authentication as well as demonstrated below:
+
+```
+iex()> client = CloudsightElixir.OAuth1Client.new(%{consumer_key: "your_api_key", consumer_secret: "your_secret"})
+  credentials: %OAuther.Credentials{
+    consumer_key: "your_api_key",
+    consumer_secret: "your_secret",
+    method: :hmac_sha1,
+    token: nil,
+    token_secret: nil
+  },
+  endpoint: "https://api.cloudsight.ai"
+}
+
+iex()> {:ok, resp} = CloudsightElixir.send_image(%{image: "./path/to/my/file.png", locale: "en"}, client)
+etc...
+```

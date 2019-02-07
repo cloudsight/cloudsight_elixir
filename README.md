@@ -99,7 +99,7 @@ iex()> {:ok, body} = CloudsightElixir.wait_for_image(token, client)
 
 You can also identify videos. The CloudSight API will split videos into scenes and return them as children to the parent response.
 
-```
+```elixir
 iex()> {:ok, resp} = CloudsightElixir.send_video(%{video"./path/to/my/file.mp4", locale: "en"}, client)
 {:ok,
  %{
@@ -144,7 +144,7 @@ iex()> CloudsightElixir.wait_for_video(token, client)
 
 We do support OAuth1 authentication as well as demonstrated below:
 
-```
+```elixir
 iex()> client = CloudsightElixir.OAuth1Client.new(%{consumer_key: "your_api_key", consumer_secret: "your_secret"})
   credentials: %OAuther.Credentials{
     consumer_key: "your_api_key",
